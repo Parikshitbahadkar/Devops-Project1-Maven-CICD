@@ -1,0 +1,15 @@
+pipeline {
+    agent any
+    stages {
+        stage('Pull Code') {
+            steps {
+                git url: 'https://github.com/yourusername/insured-assurance-java-cicd.git'
+            }
+        }
+        stage('Deploy to Tomcat') {
+            steps {
+                sh 'scp target/*.war tomcat@your-server:/path/to/tomcat/webapps/'
+            }
+        }
+    }
+}
